@@ -1,10 +1,13 @@
+import movimentacaoReserva as mr
+
 class Reserva:
 
     def __init__(self, id, nome):
 
         self.id = id
         self.nome = nome
-        self.saldo = 0.0
+        self.saldo = 0
+    
 
         self.movimentacoes = []
 
@@ -12,7 +15,6 @@ class Reserva:
         self.saldo += valor
         self.movimentacoes.apped(valor)
         
-
 
     def sacar(self, valor):
         if valor > self.saldo:

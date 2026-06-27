@@ -21,3 +21,4 @@ class MovimentacaoReserva:
             f"{self.descricao} | "
             f"R$ {self.valor:.2f}"
         )
+    
