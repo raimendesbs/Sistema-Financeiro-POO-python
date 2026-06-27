@@ -6,8 +6,12 @@ class Reserva:
         self.nome = nome
         self.saldo = 0.0
 
+        self.movimentacoes = []
+
     def depositar(self, valor):
         self.saldo += valor
+        self.movimentacoes.apped(valor)
+        
 
 
     def sacar(self, valor):
@@ -16,6 +20,8 @@ class Reserva:
             return False
 
         self.saldo -= valor
+        self.movimentacoes.append(valor)
+
         return True
 
 

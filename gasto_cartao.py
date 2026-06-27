@@ -1,3 +1,5 @@
+from datetime import date 
+
 class gastoCartao:
     data_atual = date.today()
     def __init__(self, id, descricao, tipo, valor, data=data_atual, parcelas=1, parcela_atual=1):
