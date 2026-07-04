@@ -19,6 +19,16 @@ class gastos:
             f"Data: {self.data}"
         )
 
+    def to_dict(self):
+        return {
+            "Descrição": self.descricao,
+            "Tipo": self.tipo,
+            "Valor": self.valor,
+            "Modalidade de pagamento": self.modalidade,
+            "Data": self.data
+        }
+
+
 
 despesa = gastos()
 despesa.modalidade = input('CREDITO OU DÉBITO: ')

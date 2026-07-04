@@ -22,6 +22,14 @@ class MovimentacaoReserva:
             f" VALOR: R${self.valor:.2f}"
         )
     
+    def to_dict(self):
+        return {
+            "Descrição": self.descricao,
+            "Tipo": self.tipo,
+            "Valor": self.valor,
+            "Data": self.data
+        }
+    
 movimentacao = MovimentacaoReserva()
 movimentacao.tipo = input('TIPO DE MOVIMENTAÇÃO: ')
 movimentacao.valor = float(input('VALOR: '))
