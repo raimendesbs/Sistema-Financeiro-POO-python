@@ -1,13 +1,14 @@
 from datetime import date 
+import json
 
 class gastos:
     data_atual = date.today()
-    def __init__(self, descricao='', tipo='', valor=0, modalidade='', data=data_atual):
+    def __init__(self, descricao='', tipo='', valor=0, data=data_atual):
         self.descricao = descricao
         self.tipo = tipo
         self.valor = valor
-        self.modalidade = modalidade
         self.data = data
+        
 
 
     def __str__(self):
@@ -15,7 +16,6 @@ class gastos:
             f"Descrição: {self.descricao}"
             f"Tipo: {self.tipo}"
             f"Valor: {self.valor}"
-            f"Modalidade de pagamento: {self.modalidade}"
             f"Data: {self.data}"
         )
 
@@ -24,16 +24,31 @@ class gastos:
             "Descrição": self.descricao,
             "Tipo": self.tipo,
             "Valor": self.valor,
-            "Modalidade de pagamento": self.modalidade,
             "Data": self.data
         }
 
+#salvar dados
+
+def salvar_gastos():
+    with open("dados/gastos.json", "w", encoding="utf-8") as arquivo:
+        json.dump(gastos.to_dict(), arquivo, indent=4, ensure_ascii=False)
+
+def carregar_gastos():
+    #ler os dados
+    with open("dados/gastos.json", "r", encoding="utf-8") as arquivo:
+        dados_gastos = json.load(arquivo)
 
 
-despesa = gastos()
-despesa.modalidade = input('CREDITO OU DÉBITO: ')
-despesa.descricao = input('DESCRIÇÃO: ')
-despesa.tipo = input('CATEGORIA: ')
-despesa.valor = input('VALOR: ')
-despesa.data = input('DATA: ')
+descricao = input("DESCRIÇÃO: ")
+tipo = input("TIPO: ")
+valor = float(input("VALOR: "))
+data = input("DATA (AAAA-MM-DD): ")
+
+despesa = gastos(
+    descricao,
+    tipo,
+    valor,
+    data,
+)
+
 

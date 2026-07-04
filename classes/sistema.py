@@ -6,13 +6,3 @@ class SistemaFinanceiro:
         self.contas.append(conta)
 
 
-    def to_dict(self):
-
-        return {
-
-            "contas":[
-                conta.to_dict()
-                for conta in self.contas
-            ]
-
-        }

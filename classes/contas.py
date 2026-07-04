@@ -1,7 +1,6 @@
-class Conta:
+class contas:
 
-    def __init__(self, id, banco, apelido):
-        self.id = id
+    def __init__(self, banco, apelido):
         self.banco = banco
         self.apelido = apelido
 
@@ -40,3 +39,20 @@ class Conta:
         print("\nGastos")
         for gasto in self.gastos:
             print(gasto)
+
+
+    def to_dict(self):
+        return {
+            "banco": self.banco,
+            "apelido": self.apelido,
+            "saldo": self.saldo,
+            "gastos": [gasto.to_dict() for gasto in self.gastos],
+            "receitas": [receita.to_dict() for receita in self.receitas],
+            "cartoes": [cartao.to_dict() for cartao in self.cartoes],
+            "reservas": [reserva.to_dict() for reserva in self.reservas]
+
+        }
+
+banco = input('BANCO: ')
+apelido = input('APELIDO: ')
+conta = contas(banco, apelido)
