@@ -23,15 +23,14 @@ class Conta:
         self.saldo = self.saldo - gasto.valor
 
     def adicionar_cartoes(self, cartao):
-        self.cartoes(self, cartao)
+        self.cartoes.append(cartao)
 
     def adicionar_reserva(self, reserva):
-        self.reserva(self, reserva)
+        self.reserva.append(reserva)
 
     def exibir_extrato(self):
 
         print(f"Banco: {self.banco}")
-        print(f"Apelido: {self.apelido}")
         print(f"Saldo: R$ {self.saldo:.2f}")
 
         print("\nReceitas")

@@ -16,9 +16,15 @@ class MovimentacaoReserva:
     def __str__(self):
 
         return (
-            f"{self.data} | "
-            f"{self.tipo} | "
-            f"{self.descricao} | "
-            f"R$ {self.valor:.2f}"
+            f" DATA: {self.data}"
+            f"CATEGORIA: {self.tipo} | "
+            f"DESCRIÇÃO: {self.descricao} | "
+            f" VALOR: R${self.valor:.2f}"
         )
     
+movimentacao = MovimentacaoReserva()
+movimentacao.tipo = input('TIPO DE MOVIMENTAÇÃO: ')
+movimentacao.valor = float(input('VALOR: '))
+movimentacao.descricao = input('DESCRIÇÃO: ')
+movimentacao.data = input('DATA: ')
+

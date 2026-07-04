@@ -16,3 +16,9 @@ class receitas:
                 f"Valor: {self.valor}"
                 f"Data: {self.data}"
         )
+
+ganhos = receitas()
+ganhos.descricao = input('DESCRIÇÃO: ')
+ganhos.tipo = input('TIPO DE GANHO: ')
+ganhos.valor = float(input('VALOR: '))
+ganhos.data = input('DATA: ')

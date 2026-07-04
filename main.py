@@ -1,3 +1,6 @@
+from classes import gastos
+
+
 funcionalidade = input(''' 
 ==================== MENU ===================
 0 - EXIBIR INFORMAÇÕES GERAIS
@@ -10,3 +13,12 @@ funcionalidade = input('''
 7 - ADICIONAR RESERVA
 8 - EXIBIR EXTRATO DA RESERVA            
 9 - FAZER DEPOSITO NA RESERVA ''')
+
+
+if funcionalidade == 1:
+    modalidade = input('MODALIDADE: ')
+    descricao = input('DESCRIÇÃO: ')
+    tipo = input('CATEGORIA: ')
+    valor = float(input('VALOR: '))
+    data = input("DATA: ")
+

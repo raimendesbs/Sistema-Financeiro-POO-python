@@ -1,0 +1,49 @@
+
+------------  TESTAR A CLASSE CARTÃO
+
+cartao = Cartao(
+    nome="Nubank",
+    vencimento=15,
+    limite=5000
+)
+
+gasto1 = Gasto(
+    descricao="Netflix",
+    categoria="Streaming",
+    valor=39.90,
+    modalidade="Crédito"
+)
+
+gasto2 = Gasto(
+    descricao="Uber",
+    categoria="Transporte",
+    valor=27.50,
+    modalidade="Crédito"
+)
+
+cartao.adicionar_gasto(gasto1)
+cartao.adicionar_gasto(gasto2)
+
+cartao.exibir_fatura()
+
+
+
+--------------- CRIANDO UM GASTO COM INTERAÇÃO DO USUÁRIO 
+
+descricao = input(...)
+categoria = input(...)
+valor = float(input(...))
+modalidade = input(...)
+
+Depois cria um objeto.
+
+gasto = Gasto(
+    descricao,
+    categoria,
+    valor,
+    modalidade
+)
+
+Agora ele entrega esse objeto para a conta.
+
+conta.adicionar_gasto(gasto)

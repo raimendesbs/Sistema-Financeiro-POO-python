@@ -18,3 +18,12 @@ class gastos:
             f"Modalidade de pagamento: {self.modalidade}"
             f"Data: {self.data}"
         )
+
+
+despesa = gastos()
+despesa.modalidade = input('CREDITO OU DÉBITO: ')
+despesa.descricao = input('DESCRIÇÃO: ')
+despesa.tipo = input('CATEGORIA: ')
+despesa.valor = input('VALOR: ')
+despesa.data = input('DATA: ')
+

@@ -35,3 +35,8 @@ class Reserva:
             f"Reserva: {self.nome}\n"
             f"Saldo: R$ {self.saldo:.2f}"
         )
+
+    def extrato(self): 
+        for movimentacao in self.movimentacoes:
+            print(self.movimentacao)
+            print(f"SALDO TOTAL DA RESERVA: {self.consultar_saldo}")
