@@ -31,7 +31,7 @@ class receitas:
     
 def salvar_receitas():
     with open("dados/gastos.json", "w", encoding="utf-8") as arquivo:
-        json.dump(receitas.to_dict(), arquivo, indent=4, ensure_ascii=False)
+        json.dump(receita.to_dict(), arquivo, indent=4, ensure_ascii=False)
 
 def carregar_receitas():
     #ler os dados
@@ -40,15 +40,16 @@ def carregar_receitas():
 
 
 
-#CRIA UM OBJETO
-descricao = input("DESCRIÇÃO: ")
-tipo = input("TIPO: ")
-valor = float(input("VALOR: "))
-data = input("DATA: ")
+def objeto_receita():
+    descricao = input("DESCRIÇÃO: ")
+    tipo = input("TIPO: ")
+    valor = float(input("VALOR: "))
+    data = input("DATA: ")
 
-receita = receitas(
-    descricao,
-    tipo,
-    valor,
-    data,
-)
+    return receitas(
+        descricao,
+        tipo,
+        valor,
+        data,
+    )
+

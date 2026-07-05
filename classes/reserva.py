@@ -50,7 +50,7 @@ class Reserva:
 
 def salvar_reserva():
     with open("dados/gastos.json", "w", encoding="utf-8") as arquivo:
-        json.dump(Reserva.to_dict(), arquivo, indent=4, ensure_ascii=False)
+        json.dump(reserv.to_dict(), arquivo, indent=4, ensure_ascii=False)
 
 def carregar_reserva():
     #ler os dados
@@ -58,6 +58,8 @@ def carregar_reserva():
         dados = json.load(arquivo)
 
 
+def objeto_reserva():
+    nome = input('NOME: ')
+    return Reserva(nome)
 
-nome = input('NOME: ')
-reserv = Reserva(nome)
+reserv = objeto_reserva

@@ -28,27 +28,30 @@ class gastos:
         }
 
 #salvar dados
+def objeto_gasto():
+    descricao = input("DESCRIÇÃO: ")
+    tipo = input("TIPO: ")
+    valor = float(input("VALOR: "))
+    data = input("DATA: ")
+
+    return gastos(
+        descricao,
+        tipo,
+        valor,
+        data,
+    )
+
+despesa = objeto_gasto()
+
 
 def salvar_gastos():
     with open("dados/gastos.json", "w", encoding="utf-8") as arquivo:
-        json.dump(gastos.to_dict(), arquivo, indent=4, ensure_ascii=False)
+        json.dump(despesa.to_dict(), arquivo, indent=4, ensure_ascii=False)
 
 def carregar_gastos():
     #ler os dados
     with open("dados/gastos.json", "r", encoding="utf-8") as arquivo:
         dados_gastos = json.load(arquivo)
 
-
-descricao = input("DESCRIÇÃO: ")
-tipo = input("TIPO: ")
-valor = float(input("VALOR: "))
-data = input("DATA (AAAA-MM-DD): ")
-
-despesa = gastos(
-    descricao,
-    tipo,
-    valor,
-    data,
-)
 
 

@@ -29,20 +29,25 @@ class MovimentacaoReserva:
             "Valor": self.valor,
             "Data": self.data
         }
-    
+
+
+def objeto_movReserv():
+    tipo = input('TIPO DE MOVIMENTAÇÃO: ')
+    valor = float(input('VALOR: '))
+    descricao = input('DESCRIÇÃO: ')
+    data = input('DATA: ')
+    return MovimentacaoReserva(descricao, tipo, valor, data)
+
+movimentacao = objeto_movReserv
+
+
+
+
 def salvar_movReserv():
     with open("dados/movimenta_reserva.json", "w", encoding="utf-8") as arquivo:
-        json.dump(MovimentacaoReserva.to_dict(), arquivo, indent=4, ensure_ascii=False)
+        json.dump(movimentacao.to_dict(), arquivo, indent=4, ensure_ascii=False)
 
 def carregar_movReserv():
     #ler os dados
     with open("dados/movimenta_reserva.json", "r", encoding="utf-8") as arquivo:
         dados = json.load(arquivo)
-
-
-
-tipo = input('TIPO DE MOVIMENTAÇÃO: ')
-valor = float(input('VALOR: '))
-descricao = input('DESCRIÇÃO: ')
-data = input('DATA: ')
-movimentacao = MovimentacaoReserva(descricao, tipo, valor, data)

@@ -7,10 +7,10 @@ class contas:
         # Saldo atual da conta
         self.saldo = 0
 
-        self.gastos = []
-        self.receitas = []
-        self.cartoes = []
-        self.reservas = []
+        self.gastos = {}
+        self.receitas = {}
+        self.cartoes = {}
+        self.reservas = {}
 
     
     def adicionar_receita(self, receita):
@@ -53,6 +53,9 @@ class contas:
 
         }
 
-banco = input('BANCO: ')
-apelido = input('APELIDO: ')
-conta = contas(banco, apelido)
+def objeto_conta():
+    banco = input('BANCO: ')
+    apelido = input('APELIDO: ')
+    return contas(banco, apelido)
+
+cont = objeto_conta()
