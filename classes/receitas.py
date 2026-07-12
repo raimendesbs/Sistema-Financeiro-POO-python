@@ -4,7 +4,8 @@ import json
 class receitas:
 
     data_atual = date.today()
-    def __init__(self, descricao='', tipo='', valor=0, data=data_atual):
+    def __init__(self, id, descricao='', tipo='', valor=0, data=data_atual):
+        self.id = id
         self.descricao = descricao
         self.tipo = tipo
         self.valor = valor
@@ -13,7 +14,6 @@ class receitas:
 
     def to_dict(self):
         return {
-            "Conta": self.conta,
             "Descrição": self.descricao,
             "Tipo": self.tipo,
             "Valor": self.valor,
@@ -28,6 +28,22 @@ class receitas:
             f"Valor: {self.valor}"
             f"Data: {self.data}"
         )
+    
+def objeto_receita(id_atual):
+    descricao = input("DESCRIÇÃO: ")
+    tipo = input("TIPO: ")
+    valor = float(input("VALOR: "))
+    data = input("DATA: ")
+    
+    return receitas(
+        id_atual,
+        descricao,
+        tipo,
+        valor,
+        data,
+        )
+    
+receita = objeto_receita()
     
 def salvar_receitas():
     with open("dados/gastos.json", "w", encoding="utf-8") as arquivo:

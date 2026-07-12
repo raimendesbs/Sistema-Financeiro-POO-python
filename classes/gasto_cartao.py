@@ -14,9 +14,9 @@ class gastoCartao:
         self.parcelas = parcelas
         self.parcela_atual = parcela_atual
     
+
     def to_dict(self):
         return {
-            "ID": self.id,
             "Descrição": self.descricao,
             "Tipo": self.tipo,
             "Valor": self.valor,
@@ -32,7 +32,7 @@ def objeto_gasto_cartao(id_atual):
     valor = float(input("VALOR: "))
     parcelas = int(input("NÚMERO DE PARCELAS: "))
     parcela_atual = int(input("PARCELA ATUAL: "))
-    data = input("DATA (AAAA-MM-DD): ")
+    data = input("DATA: ")
 
     return gastoCartao(
         id_atual,
@@ -45,7 +45,7 @@ def objeto_gasto_cartao(id_atual):
     )
     
 
-despesaCartao = objeto_gasto()
+despesaCartao = objeto_gasto_cartao()
 
 
 def salvar_gastos_cartoes():
@@ -55,7 +55,7 @@ def salvar_gastos_cartoes():
 def carregar_gastos_cartoes():
     #ler os dados
     with open("dados/gastos_cartao.json", "r", encoding="utf-8") as arquivo:
-        gastos_cartoes = json.load(arquivo)
+        dados_gastos_cartoes = json.load(arquivo)
 
 
 

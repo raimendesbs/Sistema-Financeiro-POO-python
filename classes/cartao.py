@@ -1,10 +1,14 @@
 from datetime import date 
 import json
 from gasto_cartao import objeto_gasto_cartao
+import pprint
+
+#
 
 class cartao:
     data_atual = date.today()
-    def __init__(self, nome='', limite=0, vencimento=data_atual):
+    def __init__(self, id='', nome='', limite=0, vencimento=data_atual):
+        self.id = id
         self.nome = nome
         self.limite = limite
         self.vencimento = vencimento
@@ -14,22 +18,27 @@ class cartao:
     
     def adicionar_gasto(self):
         chave = self.id
-        self.gastos[chave] = objeto_gasto_cartao(chave)
+        obj_gasto_card = objeto_gasto_cartao(chave)
+        dici_gasto_card = vars(obj_gasto_card)
+        self.gastos[chave] = dici_gasto_card
 
         self.id = self.id + 1
         print(f"Gasto salvo com sucesso no ID {chave}!")
 
 
 
-    def calcular_fatura(self):
+    def calcular_fatura(self):  
         total = 0 
-        for gasto in self.gastos:
-            total = total + gasto
+        for gasto in self.gastos.values(): #PERCORRE O DICIONARIO DE GASTOS
+            for valor in gasto.values(): #PERCORRE O DICIONARIO DE APENAS UM GASTO
+                if isinstance(valor, (int, float)): #VERIFICA SE O VALOR É UM NUMERO 
+                    total += valor #SOMA O VALOR
+
         return total 
     
 
     def consultar_limite(self, limite):  
-        total_fatura = self.calcular_fatura()  # 2. Faltava o 'self.' para chamar o método
+        total_fatura = self.calcular_fatura()  
         limite_restante = limite - total_fatura
 
         return limite_restante
@@ -37,8 +46,7 @@ class cartao:
 
 
     def exibir_fatura(self):
-        for gasto in self.gastos:
-            print(gasto)
+        pprint.pprint(self.gastos)
         
         print(f"TOTAL DA FATURA: {self.calcular_fatura}")
     
@@ -53,14 +61,15 @@ class cartao:
         }
 
 
-def objeto_cartao():
+def objeto_cartao(id_atual):
     nome = input("NOME DO CARTÃO: ")
     limite = float(input('VALOR DO LIMITE DO CARTÃO: '))
     vencimento = input("DATA DO VENCIMENTO: ")
 
-    return cartao(nome, limite, vencimento)
+    return cartao(id_atual, nome, limite, vencimento)
 
-card = objeto_gasto()
+
+card = objeto_cartao()
 
 
 def salvar_cartoes():

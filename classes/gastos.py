@@ -3,7 +3,8 @@ import json
 
 class gastos:
     data_atual = date.today()
-    def __init__(self, descricao='', tipo='', valor=0, data=data_atual):
+    def __init__(self, id_gerado, descricao='', tipo='', valor=0, data=data_atual):
+        self.id = id_gerado
         self.descricao = descricao
         self.tipo = tipo
         self.valor = valor
@@ -28,13 +29,14 @@ class gastos:
         }
 
 #salvar dados
-def objeto_gasto():
+def objeto_gasto(id_atual):
     descricao = input("DESCRIÇÃO: ")
     tipo = input("TIPO: ")
     valor = float(input("VALOR: "))
     data = input("DATA: ")
 
     return gastos(
+        id_atual,
         descricao,
         tipo,
         valor,

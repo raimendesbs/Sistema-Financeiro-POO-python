@@ -2,11 +2,7 @@ from datetime import date
 import json
 class MovimentacaoReserva:
 
-    def __init__(self,
-                 descricao,
-                 tipo,
-                 valor,
-                 data=date.today()):
+    def __init__(self, descricao, tipo, valor, data=date.today()):
 
         self.descricao = descricao
         self.tipo = tipo
@@ -50,4 +46,4 @@ def salvar_movReserv():
 def carregar_movReserv():
     #ler os dados
     with open("dados/movimenta_reserva.json", "r", encoding="utf-8") as arquivo:
-        dados = json.load(arquivo)
+        dados_mov_reserva = json.load(arquivo)

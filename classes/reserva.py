@@ -1,15 +1,14 @@
-import movimentacaoReserva as mr
+import movimentacaoReserva 
 import json 
 
 class Reserva:
 
     def __init__(self, nome):
-
         self.nome = nome
         self.saldo = 0
     
 
-        self.movimentacoes = []
+        self.movimentacoes = {}
 
     def depositar(self, valor):
         self.saldo += valor
@@ -47,6 +46,12 @@ class Reserva:
 
         }
 
+def objeto_reserva():
+    nome = input('NOME: ')
+    return Reserva(nome)
+
+reserv = objeto_reserva
+
 
 def salvar_reserva():
     with open("dados/gastos.json", "w", encoding="utf-8") as arquivo:
@@ -57,9 +62,3 @@ def carregar_reserva():
     with open("dados/reservas.json", "r", encoding="utf-8") as arquivo:
         dados = json.load(arquivo)
 
-
-def objeto_reserva():
-    nome = input('NOME: ')
-    return Reserva(nome)
-
-reserv = objeto_reserva

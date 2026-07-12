@@ -1,37 +1,67 @@
-from datetime import date 
-
-class gastos:
-    data_atual = date.today()
-    def __init__(self, descricao='', tipo='', valor=0, modalidade='credito' or 'debito', data=data_atual):
-        self.descricao = descricao
-        self.tipo = tipo
-        self.valor = valor
-        self.modalidade = modalidade
-        self.data = data
+from pprint import pprint
 
 
+class Pessoa:
+    def __init__(self, nome, idade, cidade):
+        self.nome = nome
+        self.idade = idade
+        self.cidade = cidade
+
+    
     def __str__(self):
         return (
-            f"Descrição: {self.descricao}\n"
-            f"Tipo: {self.tipo}\n "
-            f"Valor: {self.valor }\n"
-            f"Modalidade de pagamento: {self.modalidade}\n "
-            f"Data: {self.data}\n "
+            f"Nome: {self.nome}"
+            f"idade: {self.idade}"
+            f"cidade: {self.cidade}"
         )
     
+    def dict(self, obj):
+        return {
+            'Nome': self.nome,
+            'Idade': self.idade,
+            'Cidade': self.cidade
 
-modalidade = input('MODALIDADE: ')
-descricao = input('DESCRIÇÃO: ')
-tipo = input('CATEGORIA: ')
-valor = float(input('VALOR: '))
-data = input("DATA: ")
+        }
+
+    
+            
 
 
-gasto1 = gastos()
-gasto1.modalidade = input('MODALIDADE: ')
-gasto1.descricao = descricao
-gasto1.tipo = tipo
-gasto1.valor = valor
-gasto1.data = data
 
-print(gasto1)
+banco = {}
+def objeto():
+    nome = input("Nome: ")
+    idade = int(input("Idade: "))
+    cidade = input("Cidade: ")
+
+    return Pessoa(nome, idade, cidade)
+
+p = objeto()
+r = objeto()
+b = objeto()
+
+dicip = vars(p)
+dicir = vars(r)
+dicib = vars(b)
+
+
+banco["1"] = dicip
+banco["2"] = dicir
+banco["3"] = dicib
+
+print(banco)
+
+for pessoa in banco.values():
+    print(pessoa)
+
+def calcular_idades():
+
+    total = 0 
+    for pessoa in banco.values(): #PERCORRE O DICIONARIO DE GASTOS
+        for valor in pessoa.values(): #PERCORRE O DICIONARIO DE APENAS UM GASTO
+            if isinstance(valor, (int, float)): #VERIFICA SE O VALOR É UM NUMERO 
+                    total += valor #SOMA O VALOR
+    
+    return total
+
+print(calcular_idades())
